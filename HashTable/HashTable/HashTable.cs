@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace HashTable
 {
@@ -24,7 +24,7 @@ namespace HashTable
         public void PutPair(object key, object value)
         {
             var hash = key.GetHashCode();
-            var position = hash % size;
+            var position = Math.Abs(hash) % size;
             for (; table[position] != null; position = (position + 1) % size)
                 if (table[position].Key.Equals(key))
                     break;
@@ -40,7 +40,7 @@ namespace HashTable
         public object GetValueByKey(object key)
         {
             var hash = key.GetHashCode();
-            var startPosition = hash % size;
+            var startPosition = Math.Abs(hash) % size;
             bool flag = true;
             for(var i = startPosition; table[i] != null && (i != startPosition || flag); i = (i + 1)%size)
             {
