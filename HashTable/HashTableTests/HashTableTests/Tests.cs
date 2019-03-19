@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using HashTable;
 using NUnit.Framework;
 
-namespace HashTable
+namespace HashTableTests
 {
     [TestFixture]
-    class Tests
+    public class Tests
     {
         [Test]
         public void SimpleTest()
         {
-            var dict = new HashTable(3);
+            var dict = new HashTable.HashTable(3);
             for (var i = 0; i < 3; i++)
             {
                 dict.PutPair(i, i);
