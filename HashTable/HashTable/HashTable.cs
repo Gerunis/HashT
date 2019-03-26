@@ -41,13 +41,11 @@ namespace HashTable
         {
             var hash = key.GetHashCode();
             var startPosition = Math.Abs(hash) % size;
-            bool flag = true;
-            for(var i = startPosition; table[i] != null && (i != startPosition || flag); i = (i + 1)%size)
-            {
-                flag = false;
+            if (table[startPosition].Key.Equals(key))
+                return table[startPosition].Value;
+            for(var i = startPosition + 1; table[i] != null && i != startPosition; i = (i + 1)%size)
                 if (table[i].Key.Equals(key))
                     return table[i].Value;
-            }
             return null;
         }
 
